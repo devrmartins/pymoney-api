@@ -20,5 +20,5 @@ class TransactionSheet:
         _total_types = df.groupby(['type']).sum()
         return { 'total': str(_total), 'types': _total_types.to_json() }
     def add(self,transaction):
-        value = '-' + transaction.value if transaction.type == 'S' else transaction.value
+        value = '-' + str(transaction.value) if transaction.type == 'S' else transaction.value
         self.sheet.append_row([transaction.title, value, transaction.type, transaction.category])
